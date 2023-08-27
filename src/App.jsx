@@ -1,8 +1,8 @@
-import CounterForm from "./features/counter/CounterForm"
+import TodosForm from "./features/todos/TodosForm"
 
 function App() {
   return (
-    <CounterForm />
+    <TodosForm />
   )
 }
 
