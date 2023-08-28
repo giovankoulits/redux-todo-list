@@ -1,18 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { nanoid } from 'nanoid';
 export const todosSlice = createSlice({
   name: 'todos',
-  initialState: [],
+  initialState: { todos: [], visibilityFilter: 'all' },
   reducers: {
     addToDo: (state, action) => {
-      state.push({ text: action.payload, id: state.length });
+      state.todos.push({ ...action.payload, id: nanoid() });
     },
     deleteTodo: (state, action) => {
-      return state.filter((todo) => todo.id !== action.payload);
+      const todosAfterDelete = state.todos.filter(
+        (todo) => todo.id !== action.payload
+      );
+      return { ...state, todos: todosAfterDelete };
+    },
+    toggleTodo: (state, action) => {
+      const todosAfterToggle = state.todos.map((todo) => {
+        return todo.id === action.payload
+          ? { ...todo, completed: !todo.completed }
+          : todo;
+      });
+      return { ...state, todos: todosAfterToggle };
+    },
+    setVisibilityFilter: (state, action) => {
+      return { ...state, visibilityFilter: action.payload };
     },
   },
 });
 
-export const getTodos = (state) => state.todos;
-export const { addToDo, deleteTodo } = todosSlice.actions;
+export const getTodos = (state) => state.todos.todos;
+export const getVisibilityFilter = (state) => state.todos.visibilityFilter;
+export const { addToDo, deleteTodo, toggleTodo, setVisibilityFilter } =
+  todosSlice.actions;
 export default todosSlice.reducer;

@@ -1,8 +1,8 @@
-import TodosForm from "./features/todos/TodosForm"
+import Todos from "./features/todos/Todos"
 
 function App() {
   return (
-    <TodosForm />
+    <Todos />
   )
 }
 
