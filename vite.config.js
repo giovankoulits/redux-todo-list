@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+const vitePluginFaviconsInject = require('vite-plugin-favicons-inject');
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react()],vitePluginFaviconsInject('./src/assets/logo.svg')
 })
+

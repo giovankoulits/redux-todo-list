@@ -15,7 +15,7 @@ const Filters = () => {
          style={style}
          type="button"
          className="filter"
-         onClick={() => dispatch(setVisibilityFilter(filter))}  >{filter.charAt(0).toUpperCase() + filter.slice(1)}</button>
+         onClick={() => dispatch(setVisibilityFilter(filter))} >{filter.charAt(0).toUpperCase() + filter.slice(1)}</button>
    })
 
    return (
