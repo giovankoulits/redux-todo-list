@@ -1,25 +1,33 @@
-import { getTodos, setVisibilityFilter, getVisibilityFilter } from './todosSlice';
-import { useSelector, } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import Form
-   from './Form';
+import { getTodos, getVisibilityFilter } from './todosSlice';
+import { useSelector } from 'react-redux';
 import Todo from './Todo';
+import Filters from './Filters';
 
 const Todos = () => {
-   const dispatch = useDispatch()
    const todos = useSelector(getTodos)
    const filter = useSelector(getVisibilityFilter)
+   let visibleTodos = todos.concat()
+
+   if (filter === "active") {
+      visibleTodos = todos.filter(todo => todo.completed === false)
+   }
+   if (filter === "completed") {
+      visibleTodos = todos.filter(todo => todo.completed === true)
+   }
+
    return (
-      <>
-         {todos.map((todo, index) => {
-            const props = { ...todo, filter }
-            return <Todo {...props} key={index} />
-         })}
-         <Form />
-         <button onClick={() => dispatch(setVisibilityFilter("all"))}  >All</button>
-         <button onClick={() => { console.log(todos); dispatch(setVisibilityFilter("active")) }} >Active</button>
-      </>
+      <div className="todos" >
+         <Filters />
+
+         <ul className="todo-list">
+            {visibleTodos.map((todo, index) => {
+               const props = { ...todo, filter }
+               return <Todo {...props} key={index} />
+            })}
+         </ul>
+      </div>
    )
 }
 
 export default Todos
+

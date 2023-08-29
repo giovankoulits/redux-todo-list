@@ -16,7 +16,7 @@ export const todosSlice = createSlice({
     toggleTodo: (state, action) => {
       const todosAfterToggle = state.todos.map((todo) => {
         return todo.id === action.payload
-          ? { ...todo, completed: !todo.completed }
+          ? { ...todo, completed: !todo.completed, active: !todo.active }
           : todo;
       });
       return { ...state, todos: todosAfterToggle };

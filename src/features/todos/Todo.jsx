@@ -1,21 +1,19 @@
 import { useDispatch } from 'react-redux';
 import { deleteTodo, toggleTodo } from './todosSlice';
+import { ImBin } from 'react-icons/im';
+import { BsFillCheckCircleFill, BsFillCircleFill } from 'react-icons/bs';
 
-const Todo = ({ filter, text, id, completed }) => {
+const Todo = ({ text, id, completed, active }) => {
    const dispatch = useDispatch()
-   const style = { padding: "0px", lineHeight: "0px", marginRight: "20px", }
    return (
-      <div style={{ display: `${completed && filter === "active" ? "none" : "flex"}`, alignItems: "center", }}>
-         <div>
-            <h1 style={{ ...style, textDecoration: `${completed ? "line-through" : ""}` }} >{text}</h1>
-         </div >
-         <div>
-            <button onClick={() => dispatch(deleteTodo(id))}>X</button>
-            <button onClick={() => dispatch(toggleTodo(id))}
-            >V</button>
-         </div >
-      </div >
+      <li className="li">
+         <span onClick={() => dispatch(toggleTodo(id))} className="span-button">{completed ? <BsFillCheckCircleFill /> : <BsFillCircleFill />}</span>
+         <span style={{ textDecoration: `${completed ? "line-through" : ""}` }} className="todo-text">{text}</span>
+         {/*   <span className="todo-text">date</span> */}
+         <span onClick={() => dispatch(deleteTodo(id))} className="span-button"><ImBin /></span>
+      </li >
    )
 }
+
 
 export default Todo
