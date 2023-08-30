@@ -1,6 +1,6 @@
 * {
   font-family: 'Mulish', sans-serif;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 body {
@@ -26,7 +26,7 @@ body {
   padding: 16px;
   border: none;
   background-color: rgb(33, 33, 33);
-  color: #ae9f9f;
+  color: #fff;
   font-size: 18px;
   border-radius: 30px;
   transition: background-color 0.3s ease;
@@ -35,7 +35,7 @@ body {
   box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
 }
 .input-section input[type='text']::placeholder {
-  color: #ddd;
+  color: #fff;
 }
 .input-section input[type='text']:focus {
   outline: none;
@@ -43,7 +43,7 @@ body {
 }
 button {
   margin-left: 10px;
-  padding: 16px 23px;
+  padding: 10px 18px;
   border: none;
   background-color: rgb(33, 33, 33);
   color: #ae9f9f;
@@ -54,6 +54,8 @@ button {
   -webkit-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
   -moz-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
   box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  display: flex;
+  align-items: center;
 }
 
 button:hover {
@@ -61,7 +63,7 @@ button:hover {
   background-color: #ae9f9f;
 }
 .input-section button[type='text']::placeholder {
-  color: #ddd;
+  color: #ae9f9f;
 }
 
 .todos {
@@ -84,10 +86,8 @@ button:hover {
   display: flex;
   align-items: center;
   padding: 7px 30px;
-  background-color: rgb(38 37 37);
   border-radius: 80px;
   margin-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .todo-list li span {
   margin-left: 10px;
@@ -173,4 +173,41 @@ button:hover {
   -webkit-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
   -moz-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
   box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+}
+
+#add-button {
+  background-color: #ae9f9f;
+  border: 1px solid #ae9f9f;
+  color: rgb(33, 33, 33);
+}
+
+#add-button:hover {
+  color: #ae9f9f;
+  background-color: rgb(33, 33, 33);
+}
+
+.edit-section {
+  display: flex;
+  width: 100%;
+}
+
+.edit-section > input[type='text'] {
+  flex-grow: 1;
+  padding: 12px;
+  border: none;
+  background-color: #303030;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+  -webkit-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  -moz-box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+  box-shadow: 9px 21px 30px -19px rgba(0, 0, 0, 0.63);
+}
+.edit-section > input[type='text']::placeholder {
+  color: #fff;
+}
+.edit-section > input[type='text']:focus {
+  outline: none;
+  background-color: #555;
 }

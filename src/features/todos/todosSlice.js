@@ -21,6 +21,14 @@ export const todosSlice = createSlice({
       });
       return { ...state, todos: todosAfterToggle };
     },
+    editTodo: (state, action) => {
+      const todosAfterEdit = state.todos.map((todo) => {
+        return todo.id === action.payload.id
+          ? { ...todo, text: action.payload.text }
+          : todo;
+      });
+      return { ...state, todos: todosAfterEdit };
+    },
     setVisibilityFilter: (state, action) => {
       return { ...state, visibilityFilter: action.payload };
     },
@@ -29,6 +37,11 @@ export const todosSlice = createSlice({
 
 export const getTodos = (state) => state.todos.todos;
 export const getVisibilityFilter = (state) => state.todos.visibilityFilter;
-export const { addToDo, deleteTodo, toggleTodo, setVisibilityFilter } =
-  todosSlice.actions;
+export const {
+  addToDo,
+  deleteTodo,
+  toggleTodo,
+  setVisibilityFilter,
+  editTodo,
+} = todosSlice.actions;
 export default todosSlice.reducer;
