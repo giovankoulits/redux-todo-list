@@ -13,7 +13,7 @@ const Todo = ({ text, id, completed }) => {
 
    //HTML elements
    const editInput = <input value={textToEdit} onChange={e => setTextToEdit(e.target.value)} type="text" />
-   const editButton = <button onClick={() => { setShowInput(false); dispatch(editTodo({ id, text: textToEdit })) }} type="submit" id='add-button' className="add">Submit</button>
+   const editButton = <button type="submit" id='add-button' className="add">Submit</button>
    const pencilButton = <span onClick={() => { setShowInput(prev => !prev) }} className="span-button">
       <ImPencil />
    </span>
@@ -24,10 +24,16 @@ const Todo = ({ text, id, completed }) => {
    ///
    return (
       <li style={liStyle} className="li">
-         <div style={{ display: `${showInput ? "flex" : "none"}` }} className="edit-section">
+         <form style={{ display: `${showInput ? "flex" : "none"}` }} className="edit-section" onSubmit={
+            (e) => {
+               e.preventDefault();
+               setShowInput(false);
+               if (textToEdit.length > 0) { dispatch(editTodo({ id, text: textToEdit })) }
+            }
+         }>
             {editInput}
             {editButton}
-         </div>
+         </form>
          {!showInput && checkBox}
          {!showInput && <span style={{ textDecoration: `${completed ? "line-through" : ""}`, color: "#fff" }} className="todo-text">{text}</span>}
          {!showInput && pencilButton}

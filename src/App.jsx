@@ -6,9 +6,6 @@ function App() {
     <Form />
     <Todos />
   </div >
-
-
-
 }
 
 export default App

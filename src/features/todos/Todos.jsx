@@ -5,7 +5,9 @@ import Filters from './Filters';
 
 const Todos = () => {
    const todos = useSelector(getTodos)
+   console.log(todos);
    const filter = useSelector(getVisibilityFilter)
+   //Copy State Todos
    let visibleTodos = todos.concat()
 
    if (filter === "active") {
@@ -18,7 +20,6 @@ const Todos = () => {
    return (
       <div className="todos" >
          <Filters />
-
          <ul className="todo-list">
             {visibleTodos.map((todo, index) => {
                const props = { ...todo, filter }
