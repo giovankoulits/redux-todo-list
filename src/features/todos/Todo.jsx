@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTodo, toggleTodo, editTodo } from './todosSlice';
 import { ImBin, ImPencil } from 'react-icons/im';
 import { useState } from 'react';
-
+import PropTypes from "prop-types"
 import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im';
 const Todo = ({ text, id, completed }) => {
 
@@ -10,7 +10,6 @@ const Todo = ({ text, id, completed }) => {
    const [textToEdit, setTextToEdit] = useState(text)
    const [showInput, setShowInput] = useState(false)
    const dispatch = useDispatch()
-
    //HTML elements
    const editInput = <input value={textToEdit} onChange={e => setTextToEdit(e.target.value)} type="text" />
    const editButton = <button type="submit" id='add-button' className="add">Submit</button>
@@ -42,5 +41,10 @@ const Todo = ({ text, id, completed }) => {
    )
 }
 
+Todo.propTypes = {
+   text: PropTypes.string.isRequired,
+   id: PropTypes.string.isRequired,
+   completed: PropTypes.bool.isRequired,
+}
 
 export default Todo
